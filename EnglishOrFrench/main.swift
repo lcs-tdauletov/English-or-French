@@ -41,8 +41,10 @@ for _ in 1...intExpectedLines {
 }
     if countTheTs == countTheSs || countTheTs < countTheSs {
         print("Probably, it's French text")
+        exit(9)
     } else {
         print("Probably, it's English text")
+        exit(9)
     }
     
 }
