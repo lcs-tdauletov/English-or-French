@@ -1,35 +1,51 @@
-//
-//  main.swift
-//  English or French?
-//
-
 import Foundation
 
-// INPUT
-// Collect and filter user input here
 
-// PROCESS
-// Implement the primary logic of the problem here
-// Some output may be given here if you desire
+var countTheSs = 0
+var countTheTs = 0
 
-// Example of how to collect multiple input lines
-let expectedLines = 4
-print("Please enter the \(expectedLines) of text:")
-for _ in 1...expectedLines {
+while true {
     
-    // Get the input (use guard-let to guarantee it is not nil)
-    // and then print it out
-    guard let givenLine = readLine() else {
-        // If someone enters nil input, just skip to the next line
+    print("How many lines")
+    
+    guard let expectedLines = readLine() else {
         continue
     }
     
-    // Now we have the line, we can print it out, analyze it as needed, et cetera
-    print(givenLine)
+    guard let intExpectedLines = Int(expectedLines) else  {
+        continue
+    }
+    
+    if intExpectedLines > 10_000 || intExpectedLines < 1 {
+        continue
+    }
+    
+    
+for _ in 1...intExpectedLines {
+  
+    guard let givenLine = readLine() else {
+       
+        continue
+    }
+    for character in givenLine {
+        switch character {
+            case "S", "s":
+            countTheSs += 1
+            case "T", "t" :
+            countTheTs += 1
+            default:
+            continue
+        }
+        
+    }
+}
+    if countTheTs == countTheSs || countTheTs < countTheSs {
+        print("Probably, it's French text")
+    } else {
+        print("Probably, it's English text")
+    }
     
 }
 
-// OUTPUT
-// Report results to the user here
 
 
